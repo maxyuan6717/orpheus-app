@@ -1,0 +1,48 @@
+.container {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20width%3D%22512%22%20height%3D%22512%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M%200%20256%20L%20512%20256%20M%20256%200%20L%20256%20512%22%20stroke%3D%22%23356332%22%20stroke-width%3D%221.01px%22%20vector-effect%3D%22non-scaling-stroke%22%20stroke-linecap%3D%22square%22%20%2F%3E%3C%2Fsvg%3E");
+  background-size: 26px;
+  background-position: center;
+  background-repeat: repeat;
+  display: flex;
+  justify-content: center;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  margin: 0 4.5rem;
+  width: 100%;
+  max-width: 1385px;
+}
+
+@media (max-width: 1680px) {
+  .inner {
+    max-width: 940px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .inner {
+    max-width: 100%;
+    margin: 0 3.5rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .inner {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .inner {
+    max-width: 100%;
+    margin: 0rem;
+  }
+}

@@ -1,0 +1,43 @@
+.question_small {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.select_container {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgb(220, 220, 220);
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.select_container:hover {
+  cursor: pointer;
+  background-color: rgb(200, 200, 200);
+}
+
+.select_header {
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: 20px;
+}
+
+.selected {
+  background-color: rgba(68, 165, 255, 0.2) !important;
+  border: 2px solid rgb(68, 165, 255);
+}
+
+.strategy {
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: 1px solid black;
+  margin: -1px 0 0 -1px;
+}
+
+.strategy:hover {
+  background-color: rgb(220, 220, 220);
+}
+
+.selected_strat {
+  background-color: rgba(68, 165, 255, 0.2) !important;
+}

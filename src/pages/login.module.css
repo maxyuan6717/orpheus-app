@@ -1,0 +1,11 @@
+.container {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
+  padding: 4.25rem 3rem;
+}

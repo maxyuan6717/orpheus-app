@@ -1,0 +1,30 @@
+.header {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: 0.05rem;
+  line-height: 45px;
+}
+
+.header2 {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  letter-spacing: 0.05rem;
+  line-height: 36px;
+}
+
+.subheader {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  letter-spacing: 0.05rem;
+}
+
+.text1 {
+  font-size: 20px;
+}
+
+.bold {
+  font-weight: 700;
+}

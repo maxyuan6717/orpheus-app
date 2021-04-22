@@ -1,0 +1,27 @@
+.container {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
+  padding: 4.25rem 3rem;
+}
+
+.arrow {
+  color: rgb(220, 220, 220);
+  transition: color 0.3s;
+  display: block;
+}
+
+.arrow:hover {
+  cursor: pointer;
+  color: rgb(200, 200, 200);
+}
+
+.back_btn {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+}
