@@ -14,10 +14,10 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import { checkUser } from "./util/api";
-import { Spinner } from "react-bootstrap";
 import axios from "axios";
 import store from "./store";
 import "./common/typography.css";
+import Loading from "./components/loading";
 
 function App() {
   const [authed, setAuthed] = useState(-1);
@@ -25,7 +25,6 @@ function App() {
   useEffect(() => {
     const onMount = async () => {
       const auth = await checkUser();
-      console.log(auth);
       if (!auth || !auth.data.auth) {
         setAuthed(0);
       } else {
@@ -56,14 +55,9 @@ function App() {
   return (
     <Provider store={store}>
       {authed === -1 ? (
-        <Spinner
-          className="m-auto"
-          animation="border"
-          role="status"
-          style={{ width: "100px", height: "100px" }}
-        >
-          <span className="sr-only">Loading...</span>
-        </Spinner>
+        <div className="d-flex" style={{ width: "100vw", height: "100vh" }}>
+          <Loading />
+        </div>
       ) : (
         <Router>
           <NavMenu />
@@ -74,12 +68,10 @@ function App() {
             <PublicRoute exact path="/login">
               <Login setAuthed={setAuthed} />
             </PublicRoute>
-            {/* <MyRoute exact path="/:id">
-            <Dashboard />
-          </MyRoute>
-          <MyRoute exact path="/:id/:day_no">
-            <DayPage />
-          </MyRoute> */}
+
+            <SecureRoute exact path="/:day_no">
+              <DayPage />
+            </SecureRoute>
             <SecureRoute path="/">
               <Dashboard />
             </SecureRoute>

@@ -39,7 +39,7 @@ const Day = ({ info, day_no }) => {
       minutes: minutes,
     };
     setSaved(-1);
-    await saveUser(info._id, temp);
+    await saveUser(temp);
     setSaved(1);
     setTimeout(() => {
       setSaved(0);

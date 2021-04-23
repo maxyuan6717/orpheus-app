@@ -109,7 +109,7 @@ const Assessment = ({ info }) => {
       signature,
     };
     setSaved(-1);
-    await saveUser(info._id, temp);
+    await saveUser(temp);
     setSaved(1);
     setTimeout(() => {
       setSaved(0);
@@ -177,7 +177,7 @@ const Assessment = ({ info }) => {
                 {question}
               </Col>
               {[0, 1].map((indx) => (
-                <Col xs={4} className="px-1 py-1">
+                <Col xs={4} className="px-1 py-1" key={indx}>
                   <textarea
                     value={devUsage[index][indx]}
                     onChange={(e) => {
@@ -374,8 +374,9 @@ const Assessment = ({ info }) => {
         <Col md={6} className="pl-0">
           <div className="text1 bold">Everyone</div>
           {everyone_check.map((check, index) => (
-            <div>
+            <div key={index}>
               <input
+                key={index}
                 type="checkbox"
                 id={`everyone_${index}`}
                 name={`everyone_${index}`}
@@ -388,7 +389,7 @@ const Assessment = ({ info }) => {
               />
               <label
                 style={{ display: "inline" }}
-                for={`everyone_${index}`}
+                htmlFor={`everyone_${index}`}
                 className="ml-2"
               >
                 {check}
@@ -399,8 +400,9 @@ const Assessment = ({ info }) => {
         <Col md={6} className="pl-0">
           <div className="text1 bold">Recommendations</div>
           {recommend_check.map((check, index) => (
-            <div>
+            <div key={index}>
               <input
+                key={index}
                 type="checkbox"
                 id={`recommend_${index}`}
                 name={`recommend_${index}`}
@@ -413,7 +415,7 @@ const Assessment = ({ info }) => {
               />
               <label
                 style={{ display: "inline" }}
-                for={`recommend_${index}`}
+                htmlFor={`recommend_${index}`}
                 className="ml-2"
               >
                 {check}
@@ -485,7 +487,7 @@ const Assessment = ({ info }) => {
       <Row className="mx-auto px-5">
         <Col md={6} className="pl-0">
           {filter_labels.map((filter, index) => (
-            <div>
+            <div key={index}>
               <div>{filter}</div>
               <textarea
                 value={filters[index]}

@@ -6,8 +6,8 @@ const addUser = async (email) => {
   return user;
 };
 
-const getUser = async (id) => {
-  let user = await axios.post(`${Base}/user/get`, { userId: id });
+const getUser = async () => {
+  let user = await axios.post(`${Base}/user/get`);
   return user;
 };
 
@@ -16,17 +16,15 @@ const checkUser = async () => {
   return auth;
 };
 
-const saveUser = async (id, responses) => {
+const saveUser = async (responses) => {
   let saved = await axios.post(`${Base}/user/save`, {
-    userId: id,
     responses: responses,
   });
   return saved;
 };
 
-const registerUser = async (id, name, password1, password2) => {
+const registerUser = async (name, password1, password2) => {
   let user = await axios.post(`${Base}/user/register`, {
-    userId: id,
     name,
     password1,
     password2,

@@ -11,23 +11,20 @@ import Spacer from "../components/spacer";
 import { days } from "../util/constants";
 
 const DayPage = () => {
-  let { id, day_no } = useParams();
+  let { day_no } = useParams();
   const [info, setInfo] = useState({});
   const history = useHistory();
 
   if (!days.includes(day_no)) {
-    history.push(`/${id}/`);
+    history.push(`/`);
   }
   day_no = parseInt(day_no);
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        let userInfo = await getUser(id);
+        let userInfo = await getUser();
         if (userInfo.data && userInfo.data.fetchedUser) {
           setInfo(userInfo.data.fetchedUser);
-          if (!localStorage.getItem("userId")) {
-            localStorage.setItem("userId", id);
-          }
           // console.log(userInfo.data.fetchedUser);
         } else {
           history.push("/");
@@ -37,7 +34,7 @@ const DayPage = () => {
       }
     };
     fetchUser();
-  }, [id, day_no]);
+  }, [day_no]);
 
   return (
     <div className={styles.container}>
@@ -45,14 +42,14 @@ const DayPage = () => {
         {Object.keys(info).length > 0 ? (
           <>
             <Row className="mx-auto justify-content-center">
-              <Link to={`/${id}`} className={styles.back_btn}>
+              <Link to={`/`} className={styles.back_btn}>
                 Back to dashboard
               </Link>
             </Row>
             <Row className="mx-auto">
               <Link
                 className="my-auto mr-2"
-                to={`/${id}/${day_no - 1}`}
+                to={`/${day_no - 1}`}
                 style={{ pointerEvents: day_no > 0 ? null : "none" }}
               >
                 <FaChevronLeft size={25} className={styles.arrow} />
@@ -60,7 +57,7 @@ const DayPage = () => {
               <span className="header">Day {day_no}</span>
               <Link
                 className="my-auto ml-2"
-                to={`/${id}/${day_no + 1}`}
+                to={`/${day_no + 1}`}
                 style={{ pointerEvents: day_no < 21 ? null : "none" }}
               >
                 <FaChevronRight size={25} className={styles.arrow} />
