@@ -1,11 +1,6 @@
 import axios from "axios";
 import { Base } from "./base";
 
-const addUser = async (email) => {
-  let user = await axios.post(`${Base}/user/add`, { email: email });
-  return user;
-};
-
 const getUser = async () => {
   let user = await axios.post(`${Base}/user/get`);
   return user;
@@ -37,4 +32,4 @@ const loginUser = async (email, password) => {
   return user;
 };
 
-export { addUser, getUser, checkUser, saveUser, registerUser, loginUser };
+export { getUser, checkUser, saveUser, registerUser, loginUser };
