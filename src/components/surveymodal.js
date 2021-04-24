@@ -71,7 +71,7 @@ const SurveyModal = ({ day_no, show, setShow }) => {
     >
       <Modal.Header closeButton>
         <StyledTitle id="contained-modal-title-vcenter">
-          Daily Survey
+          Please take 1 minute to help us improve our program
         </StyledTitle>
       </Modal.Header>
       <Modal.Body>
