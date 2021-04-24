@@ -38,4 +38,29 @@ const signoutUser = async () => {
   return user;
 };
 
-export { getUser, checkUser, saveUser, registerUser, loginUser, signoutUser };
+const addSurvey = async (
+  rating,
+  engaging,
+  engaging_comments,
+  improve,
+  day_no
+) => {
+  let survey = await axios.post(`${Base}/survey/add`, {
+    rating,
+    engaging,
+    engaging_comments,
+    improve,
+    day_no,
+  });
+  return survey;
+};
+
+export {
+  getUser,
+  checkUser,
+  saveUser,
+  registerUser,
+  loginUser,
+  signoutUser,
+  addSurvey,
+};

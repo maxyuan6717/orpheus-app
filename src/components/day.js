@@ -5,6 +5,7 @@ import Spacer from "./spacer";
 import { saveUser } from "../util/api";
 import { Row } from "react-bootstrap";
 import Button from "./button";
+import SurveyModal from "./surveymodal";
 
 const Day = ({ info, day_no }) => {
   const questions = program[day_no - 1].questions;
@@ -14,6 +15,7 @@ const Day = ({ info, day_no }) => {
     res["ans"] ? res["ans"] : new Array(N).fill("")
   );
   const [minutes, setMinutes] = useState(res["minutes"] ? res["minutes"] : "");
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const temp_questions = program[day_no - 1].questions;
@@ -33,6 +35,7 @@ const Day = ({ info, day_no }) => {
 
   const [saved, setSaved] = useState(0);
   const saveResponses = async () => {
+    setShow(true);
     const temp = [...info.responses];
     temp[day_no] = {
       ans: responses,
@@ -89,6 +92,7 @@ const Day = ({ info, day_no }) => {
           {saved === -1 ? "Saving..." : saved === 1 ? "Saved :)" : ""}
         </span>
       </Row>
+      <SurveyModal show={show} setShow={setShow} day_no={day_no} />
     </div>
   );
 };
