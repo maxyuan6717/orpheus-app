@@ -10,6 +10,9 @@ import Loading from "../components/loading";
 const Dashboard = () => {
   const [info, setInfo] = useState({});
   const [screentime, setScreentime] = useState(new Array(21).fill(0));
+  const [social_screentime, setSocialScreentime] = useState(
+    new Array(21).fill(0)
+  );
   const [loading, setLoading] = useState(false);
 
   const history = useHistory();
@@ -34,14 +37,20 @@ const Dashboard = () => {
   useEffect(() => {
     if (Object.keys(info).length === 0) return;
     const res = info.responses;
-    let temp = [...screentime];
+    let temp_minutes = [...screentime];
+    let temp_social = [...social_screentime];
     for (let i = 1; i <= 21; i++) {
-      temp[i - 1] = res[i].minutes ? parseInt(res[i].minutes) : 0;
+      temp_minutes[i - 1] = res[i].minutes ? parseInt(res[i].minutes) : 0;
+      temp_social[i - 1] = res[i].social_minutes
+        ? parseInt(res[i].social_minutes)
+        : 0;
     }
 
-    if (JSON.stringify(temp) !== JSON.stringify(screentime))
-      setScreentime(temp);
-  }, [info, screentime]);
+    if (JSON.stringify(temp_minutes) !== JSON.stringify(screentime))
+      setScreentime(temp_minutes);
+    if (JSON.stringify(temp_social) !== JSON.stringify(social_screentime))
+      setSocialScreentime(temp_social);
+  }, [info, screentime, social_screentime]);
 
   return (
     <div className={styles.container}>
@@ -77,12 +86,20 @@ const Dashboard = () => {
             </div>
             <div className={styles.graph_container}>
               <ResponsiveLine
+                colors={{ scheme: "pastel1" }}
                 data={[
                   {
-                    id: "screentime",
+                    id: "Social Media Screentime",
+                    color: "hsl(152, 70%, 50%)",
+                    data: social_screentime.map((min, index) => {
+                      return { x: index + 1, y: min };
+                    }),
+                  },
+                  {
+                    id: "Total Screentime",
                     color: "red",
-                    data: screentime.map((hr, index) => {
-                      return { x: index + 1, y: hr };
+                    data: screentime.map((min, index) => {
+                      return { x: index + 1, y: min };
                     }),
                   },
                 ]}
@@ -105,6 +122,58 @@ const Dashboard = () => {
                   legendOffset: -40,
                   legendPosition: "middle",
                 }}
+                enableSlices="x"
+                useMesh={true}
+                sliceTooltip={({ slice }) => {
+                  return (
+                    <div
+                      style={{
+                        background: "white",
+                        padding: "9px 12px",
+                        border: "1px solid #ccc",
+                      }}
+                    >
+                      <div>Day {slice.points[1].index + 1}</div>
+                      {slice.points.map((point) => (
+                        <div
+                          key={point.id}
+                          style={{
+                            color: point.serieColor,
+                          }}
+                        >
+                          <strong>{point.serieId}:</strong>
+                          {"  " + point.data.yFormatted}
+                        </div>
+                      ))}
+                    </div>
+                  );
+                }}
+                legends={[
+                  {
+                    anchor: "top",
+                    direction: "row",
+                    justify: false,
+                    translateX: 0,
+                    translateY: 0,
+                    itemsSpacing: 0,
+                    itemDirection: "left-to-right",
+                    itemWidth: 200,
+                    itemHeight: 20,
+                    itemOpacity: 0.75,
+                    symbolSize: 12,
+                    symbolShape: "circle",
+                    symbolBorderColor: "rgba(0, 0, 0, .5)",
+                    effects: [
+                      {
+                        on: "hover",
+                        style: {
+                          itemBackground: "rgba(0, 0, 0, .03)",
+                          itemOpacity: 1,
+                        },
+                      },
+                    ],
+                  },
+                ]}
               />
             </div>
           </>

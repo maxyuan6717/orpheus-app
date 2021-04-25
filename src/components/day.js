@@ -15,6 +15,9 @@ const Day = ({ info, day_no }) => {
     res["ans"] ? res["ans"] : new Array(N).fill("")
   );
   const [minutes, setMinutes] = useState(res["minutes"] ? res["minutes"] : "");
+  const [social_minutes, setSocialMinutes] = useState(
+    res["social_minutes"] ? res["social_minutes"] : ""
+  );
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -31,6 +34,11 @@ const Day = ({ info, day_no }) => {
     } else {
       setMinutes("");
     }
+    if (temp_res["social_minutes"]) {
+      setSocialMinutes(temp_res["social_minutes"]);
+    } else {
+      setSocialMinutes("");
+    }
   }, [day_no, info]);
 
   const [saved, setSaved] = useState(0);
@@ -40,6 +48,7 @@ const Day = ({ info, day_no }) => {
     temp[day_no] = {
       ans: responses,
       minutes: minutes,
+      social_minutes: social_minutes,
     };
     setSaved(-1);
     await saveUser(temp);
@@ -82,6 +91,19 @@ const Day = ({ info, day_no }) => {
           const re = /^[0-9\b]+$/;
           if (e.target.value === "" || re.test(e.target.value)) {
             setMinutes(e.target.value);
+          }
+        }}
+      />
+      <Spacer />
+      <div>{`${
+        responses.length + 2
+      }. How many minutes did you spend on your top 3 social media apps?`}</div>
+      <input
+        value={social_minutes}
+        onChange={(e) => {
+          const re = /^[0-9\b]+$/;
+          if (e.target.value === "" || re.test(e.target.value)) {
+            setSocialMinutes(e.target.value);
           }
         }}
       />
