@@ -74,13 +74,19 @@ const Dashboard = () => {
 
             <div className="subheader">
               <Row className="mx-auto">
-                <span className="my-auto">Welcome to day {info.day}/21</span>
+                <span className="my-auto">
+                  {info.day > 21
+                    ? "Congrats! You completed the Orpheus Pledge"
+                    : `Welcome to day ${info.day}/21`}
+                </span>
                 <span className="mx-3 my-auto">|</span>
                 <Link
                   className={styles.entry_link + " my-auto"}
-                  to={`/${info.day}`}
+                  to={`/${Math.min(21, info.day)}`}
                 >
-                  Fill out today's entry →
+                  {info.day > 21
+                    ? "See your past entries →"
+                    : "Fill out today's entry →"}
                 </Link>
               </Row>
             </div>

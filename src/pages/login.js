@@ -2,7 +2,8 @@ import { useState } from "react";
 import styles from "./login.module.css";
 import Button from "../components/button";
 import { loginUser } from "../util/api";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Spacer from "../components/spacer";
 
 const Login = ({ setAuthed }) => {
   const [email, setEmail] = useState("");
@@ -60,6 +61,10 @@ const Login = ({ setAuthed }) => {
             }}
           />
         </div>
+        <div>
+          Don't have an account? <Link to="/register">Register</Link> for one!
+        </div>
+        <Spacer />
         <Button type="link" height="3rem" text="Login" onClick={handleSubmit} />
         <div>{err.length > 0 && err}</div>
       </div>

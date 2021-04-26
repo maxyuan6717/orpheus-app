@@ -103,7 +103,7 @@ const Register = () => {
           text="Create"
           onClick={handleSubmit}
         />
-        <div>{err.length > 0 && err}</div>
+        <div>{err && err.length > 0 ? err : null}</div>
       </div>
     </div>
   );
