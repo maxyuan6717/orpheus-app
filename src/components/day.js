@@ -109,11 +109,14 @@ const Day = ({ info, day_no }) => {
       />
       <Spacer />
       <Row className="mx-auto justify-content-center">
-        <Button onClick={saveResponses} text="save" type="link" />
-        <span className="my-auto">
-          {saved === -1 ? "Saving..." : saved === 1 ? "Saved :)" : ""}
-        </span>
+        <div>
+          <Button onClick={saveResponses} text="save" type="link" />
+          <div className="text-center">
+            {saved === -1 ? "Saving..." : saved === 1 ? "Saved :)" : ""}
+          </div>
+        </div>
       </Row>
+
       <SurveyModal show={show} setShow={setShow} day_no={day_no} />
     </div>
   );

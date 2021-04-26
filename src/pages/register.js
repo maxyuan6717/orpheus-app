@@ -3,7 +3,8 @@ import styles from "./register.module.css";
 import styled from "styled-components";
 import Button from "../components/button";
 import { registerUser } from "../util/api";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { StyledInput } from "../common/styledcomponents";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -52,10 +53,10 @@ const Register = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <div className="header">Create Account</div>
-        <div>
+        <div className="header mb-5">Create Account</div>
+        <div className="mb-3">
           <div className="subheader">Email</div>
-          <input
+          <StyledInput
             type="email"
             placeholder="Email"
             value={email}
@@ -64,9 +65,9 @@ const Register = () => {
             }}
           />
         </div>
-        <div>
+        <div className="mb-3">
           <div className="subheader">First Name</div>
-          <input
+          <StyledInput
             type="text"
             placeholder="First Name"
             value={name}
@@ -75,9 +76,9 @@ const Register = () => {
             }}
           />
         </div>
-        <div>
+        <div className="mb-3">
           <div className="subheader">Enter a Password</div>
-          <input
+          <StyledInput
             type="password"
             placeholder="Password"
             value={password1}
@@ -86,9 +87,9 @@ const Register = () => {
             }}
           />
         </div>
-        <div>
+        <div className="mb-5">
           <div className="subheader">Confirm Your Password</div>
-          <input
+          <StyledInput
             type="password"
             placeholder="Confirm Password"
             value={password2}

@@ -1,5 +1,15 @@
 .container {
-  background-color: white;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20width%3D%22512%22%20height%3D%22512%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M%200%20256%20L%20512%20256%20M%20256%200%20L%20256%20512%22%20stroke%3D%22rgba(53, 99, 50, 0.6)%22%20stroke-width%3D%221.01px%22%20vector-effect%3D%22non-scaling-stroke%22%20stroke-linecap%3D%22square%22%20%2F%3E%3C%2Fsvg%3E"),
+    linear-gradient(
+      152deg,
+      rgba(27, 25, 38, 0.502) 100%,
+      rgba(62, 97, 140, 0.502) 100%
+    ),
+    url("../assets/home_bg.jpeg");
+  background-size: 26px, cover, cover;
+  background-position: center, 0% 0%, center;
+  background-repeat: repeat, repeat, repeat;
+  background-attachment: fixed;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -8,4 +18,5 @@
 .content {
   width: 100%;
   padding: 4.25rem 3rem;
+  color: white;
 }

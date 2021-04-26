@@ -575,10 +575,12 @@ const Assessment = ({ info }) => {
       </Row>
       <Spacer />
       <Row className="mx-auto justify-content-center">
-        <Button onClick={saveResponses} text="save" type="link" />
-        <span>
-          {saved === -1 ? "Saving..." : saved === 1 ? "Saved :)" : ""}
-        </span>
+        <div>
+          <Button onClick={saveResponses} text="save" type="link" />
+          <div className="text-center">
+            {saved === -1 ? "Saving..." : saved === 1 ? "Saved :)" : ""}
+          </div>
+        </div>
       </Row>
     </div>
   );

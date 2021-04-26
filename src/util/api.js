@@ -38,6 +38,11 @@ const signoutUser = async () => {
   return user;
 };
 
+const readIntro = async () => {
+  let res = await axios.get(`${Base}/user/intro`);
+  return res;
+};
+
 const addSurvey = async (
   rating,
   engaging,
@@ -63,4 +68,5 @@ export {
   loginUser,
   signoutUser,
   addSurvey,
+  readIntro,
 };

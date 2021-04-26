@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import styles from "./day.module.css";
 import { useParams, useHistory } from "react-router-dom";
 import Assessment from "../components/assessment";
+import Intro from "../components/intro";
 import Day from "../components/day";
-import { getUser } from "../util/api";
+import { getUser, readIntro } from "../util/api";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Row } from "react-bootstrap";
@@ -18,6 +19,7 @@ const DayPage = () => {
   if (!days.includes(day_no)) {
     history.push(`/`);
   }
+  if (day_no === "intro") day_no = "-1";
   day_no = parseInt(day_no);
   useEffect(() => {
     const fetchUser = async () => {
@@ -25,11 +27,15 @@ const DayPage = () => {
         let userInfo = await getUser();
         if (userInfo.data && userInfo.data.fetchedUser) {
           setInfo(userInfo.data.fetchedUser);
+          if (userInfo.data.fetchedUser.day === -1 && day_no === 0) {
+            await readIntro();
+          }
           // console.log(userInfo.data.fetchedUser);
         } else {
           history.push("/");
         }
       } catch (err) {
+        console.log(err);
         history.push("/");
       }
     };
@@ -49,12 +55,14 @@ const DayPage = () => {
             <Row className="mx-auto">
               <Link
                 className="my-auto mr-2"
-                to={`/${day_no - 1}`}
-                style={{ pointerEvents: day_no > 0 ? null : "none" }}
+                to={`/${day_no - 1 >= 0 ? day_no - 1 : "intro"}`}
+                style={{ pointerEvents: day_no > -1 ? null : "none" }}
               >
                 <FaChevronLeft size={25} className={styles.arrow} />
               </Link>
-              <span className="header">Day {day_no}</span>
+              <span className="header">
+                {day_no >= 0 ? `Day ${day_no}` : "Introduction"}
+              </span>
               <Link
                 className="my-auto ml-2"
                 to={`/${day_no + 1}`}
@@ -64,7 +72,9 @@ const DayPage = () => {
               </Link>
             </Row>
             <Spacer />
-            {day_no === 0 ? (
+            {day_no === -1 ? (
+              <Intro />
+            ) : day_no === 0 ? (
               <Assessment info={info} />
             ) : (
               <Day info={info} day_no={day_no} />

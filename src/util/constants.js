@@ -1,4 +1,5 @@
 export const days = [
+  "intro",
   "0",
   "0a",
   "0b",

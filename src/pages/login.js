@@ -4,6 +4,7 @@ import Button from "../components/button";
 import { loginUser } from "../util/api";
 import { Link, useHistory } from "react-router-dom";
 import Spacer from "../components/spacer";
+import { StyledInput } from "../common/styledcomponents";
 
 const Login = ({ setAuthed }) => {
   const [email, setEmail] = useState("");
@@ -38,10 +39,10 @@ const Login = ({ setAuthed }) => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <div className="header">Login</div>
-        <div>
+        <div className="header mb-5">Log In</div>
+        <div className="mb-3">
           <div className="subheader">Email</div>
-          <input
+          <StyledInput
             type="email"
             placeholder="Email"
             value={email}
@@ -50,9 +51,9 @@ const Login = ({ setAuthed }) => {
             }}
           />
         </div>
-        <div>
+        <div className="mb-3">
           <div className="subheader">Password</div>
-          <input
+          <StyledInput
             type="password"
             placeholder="Password"
             value={password}
@@ -61,11 +62,19 @@ const Login = ({ setAuthed }) => {
             }}
           />
         </div>
-        <div>
-          Don't have an account? <Link to="/register">Register</Link> for one!
+        <div className="mb-5">
+          Don't have an account?{" "}
+          <Link to="/register" style={{ color: "#d8ffd6" }}>
+            Register
+          </Link>{" "}
+          for one!
         </div>
-        <Spacer />
-        <Button type="link" height="3rem" text="Login" onClick={handleSubmit} />
+        <Button
+          type="link"
+          height="3rem"
+          text="Log In"
+          onClick={handleSubmit}
+        />
         <div>{err.length > 0 && err}</div>
       </div>
     </div>

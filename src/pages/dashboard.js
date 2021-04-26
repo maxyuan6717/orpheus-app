@@ -61,7 +61,7 @@ const Dashboard = () => {
           <>
             <Row className="mx-auto justify-content-between">
               <div className="header">
-                Hello {info.name ? info.name : info.email}
+                Hello, {info.name ? info.name : info.email}!
               </div>
               {!info.name && (
                 <Button
@@ -77,12 +77,12 @@ const Dashboard = () => {
                 <span className="my-auto">
                   {info.day > 21
                     ? "Congrats! You completed the Orpheus Pledge"
-                    : `Welcome to day ${info.day}/21`}
+                    : `Welcome to day ${info.day === -1 ? 0 : info.day}/21`}
                 </span>
                 <span className="mx-3 my-auto">|</span>
                 <Link
                   className={styles.entry_link + " my-auto"}
-                  to={`/${Math.min(21, info.day)}`}
+                  to={`/${info.day === -1 ? "intro" : Math.min(21, info.day)}`}
                 >
                   {info.day > 21
                     ? "See your past entries →"
