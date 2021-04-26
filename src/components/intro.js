@@ -25,10 +25,10 @@ const Intro = () => {
         device and select platforms.
         <br />
         <br />
-        It will take 15-20 minutes to complete the first few pages of
-        assessments and only a few minutes a day to complete the readings and
-        exercises. The end goal is for you to be more intentional, aware, and
-        reimagine your relationship with technology.
+        It will take 15 minutes to complete the first few pages of assessments
+        and only a few minutes a day to complete the readings and exercises. The
+        end goal is for you to be more intentional, aware, and reimagine your
+        relationship with technology.
       </div>
       <Spacer />
       <Row className="mx-auto justify-content-center">
