@@ -90,7 +90,7 @@ const Dashboard = () => {
                 </Link>
               </Row>
             </div>
-            <div className={styles.graph_container + " mt-5"}>
+            <div className={styles.graph_container + " my-5"}>
               <div className={styles.graph_title}>
                 Your Screen Time Progress
               </div>
@@ -192,6 +192,17 @@ const Dashboard = () => {
                 }}
               />
             </div>
+            <Row className="mx-auto justify-content-center">
+              <a
+                href="https://www.notion.so/Tips-Resources-6d7d8bcfea8a481d9cd3c6cb13f8dc67"
+                rel="noreferrer"
+                target="_blank"
+                className={styles.entry_link}
+                style={{ fontSize: "18px" }}
+              >
+                Click here for community tips & resources →
+              </a>
+            </Row>
           </>
         )}
       </div>
