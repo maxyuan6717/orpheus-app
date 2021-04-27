@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { Row } from "react-bootstrap";
 import Spacer from "../components/spacer";
 import { days } from "../util/constants";
+import Loading from "../components/loading";
 
 const DayPage = () => {
   let { day_no } = useParams();
@@ -81,7 +82,9 @@ const DayPage = () => {
             )}
           </>
         ) : (
-          <div>Loading...</div>
+          <div className="d-flex" style={{ width: "100%" }}>
+            <Loading />
+          </div>
         )}
       </div>
     </div>
