@@ -56,7 +56,9 @@ const Dashboard = () => {
     <div className={styles.container}>
       <div className={styles.content}>
         {loading ? (
-          <div>Loading...</div>
+          <div className="d-flex" style={{ width: "100%" }}>
+            <Loading />
+          </div>
         ) : (
           <>
             <Row className="mx-auto justify-content-between">
