@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import Spacer from "./spacer";
 import Button from "./button";
 import { saveUser } from "../util/api";
+import { StyledInput, StyledTextArea } from "../common/styledcomponents";
 
 const Assessment = ({ info }) => {
   const res = info && info.responses ? info.responses[0] : {};
@@ -118,7 +119,9 @@ const Assessment = ({ info }) => {
 
   return (
     <div>
-      <div className="header">Assess your relationship with technology</div>
+      <div className="header mt-4">
+        Assess your relationship with technology
+      </div>
       <div className="subheader">Reflect on your usage</div>
       <Spacer />
       <Row className="mx-auto">
@@ -127,7 +130,7 @@ const Assessment = ({ info }) => {
           your phone?
         </Col>
         <Col md={8}>
-          <textarea
+          <StyledTextArea
             value={firstWord}
             onChange={(e) => {
               setFirstWord(e.target.value);
@@ -162,7 +165,7 @@ const Assessment = ({ info }) => {
       </Row>
       <Row className="mx-auto">
         <Col md={6} className="pl-0">
-          <textarea
+          <StyledTextArea
             value={techHabits}
             onChange={(e) => {
               setTechHabits(e.target.value);
@@ -178,7 +181,7 @@ const Assessment = ({ info }) => {
               </Col>
               {[0, 1].map((indx) => (
                 <Col xs={4} className="px-1 py-1" key={indx}>
-                  <textarea
+                  <StyledTextArea
                     value={devUsage[index][indx]}
                     onChange={(e) => {
                       let temp = JSON.parse(JSON.stringify(devUsage));
@@ -200,7 +203,7 @@ const Assessment = ({ info }) => {
           <span className={styles.question_small}>Must have device for</span>
         </Col>
         <Col md={6} className="px-0">
-          <textarea
+          <StyledTextArea
             value={mustHave}
             onChange={(e) => {
               setMustHave(e.target.value);
@@ -218,7 +221,7 @@ const Assessment = ({ info }) => {
           </span>
         </Col>
         <Col md={6} className="px-0">
-          <textarea
+          <StyledTextArea
             value={joy}
             onChange={(e) => {
               setJoy(e.target.value);
@@ -236,7 +239,7 @@ const Assessment = ({ info }) => {
           </span>
         </Col>
         <Col md={6} className="px-0">
-          <textarea
+          <StyledTextArea
             value={distract}
             onChange={(e) => {
               setDistract(e.target.value);
@@ -247,7 +250,7 @@ const Assessment = ({ info }) => {
         <Col md={2} />
       </Row>
       <Spacer />
-      <div className="header">Your Approach</div>
+      <div className="header mt-4">Your Approach</div>
       <div className="subheader">What Strategy is Best for You</div>
       <Spacer />
       <Row className="mx-auto">
@@ -255,7 +258,7 @@ const Assessment = ({ info }) => {
           What does a healthy relationship with technology look like for you?
         </Col>
         <Col md={8}>
-          <textarea
+          <StyledTextArea
             value={healthy}
             onChange={(e) => {
               setHealthy(e.target.value);
@@ -368,7 +371,7 @@ const Assessment = ({ info }) => {
         </div>
       </Row>
       <Spacer />
-      <div className="header">Prepare Yourself</div>
+      <div className="header mt-4">Prepare Yourself</div>
       <div className="subheader">Get ready with the following checklists</div>
       <Row className="mx-auto">
         <Col md={6} className="pl-0">
@@ -427,6 +430,7 @@ const Assessment = ({ info }) => {
       <Spacer />
       <div className="text1 bold">Specific Strategy</div>
       <div className="">Select and fill out one of the following.</div>
+      <Spacer />
       <Row className="mx-auto px-5">
         <Col
           className={`p-2 ${styles.strategy} ${
@@ -489,7 +493,7 @@ const Assessment = ({ info }) => {
           {filter_labels.map((filter, index) => (
             <div key={index}>
               <div>{filter}</div>
-              <textarea
+              <StyledTextArea
                 value={filters[index]}
                 onChange={(e) => {
                   let temp = [...filters];
@@ -516,7 +520,7 @@ const Assessment = ({ info }) => {
         </Col>
       </Row>
       <Spacer />
-      <div className="header">Pledge</div>
+      <div className="header mt-4">Pledge</div>
       <div className="m-4">
         <div className="text1 bold">A quick note:</div>
         <Spacer />
@@ -544,7 +548,7 @@ const Assessment = ({ info }) => {
         Write down where you are at. Do you want to try and can you commit? (Why
         or why not?)
       </div>
-      <textarea
+      <StyledTextArea
         style={{ width: "100%" }}
         value={commit}
         onChange={(e) => {
@@ -564,7 +568,7 @@ const Assessment = ({ info }) => {
         <div className="text1 mr-2" style={{ fontStyle: "italic" }}>
           Signature
         </div>
-        <textarea
+        <StyledTextArea
           style={{ width: "50%" }}
           rows={1}
           value={signature}

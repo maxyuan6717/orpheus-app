@@ -1,6 +1,6 @@
 .container {
-  background-color: #d8ffd6;
-  color: #196e73;
+  background-color: var(--primary-light);
+  color: var(--secondary);
   display: flex;
   text-transform: uppercase;
   font-size: 1.25em;
@@ -15,5 +15,5 @@
   background-color: var(--primary);
   cursor: pointer;
   text-decoration: none;
-  color: #196e73;
+  color: var(--secondary);
 }

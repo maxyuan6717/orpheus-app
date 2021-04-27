@@ -60,7 +60,7 @@ function App() {
         </div>
       ) : (
         <Router>
-          <NavMenu />
+          <NavMenu authed={authed} />
           <Switch>
             <PublicRoute exact path="/register">
               <Register />

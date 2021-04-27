@@ -6,6 +6,7 @@ import { saveUser } from "../util/api";
 import { Row } from "react-bootstrap";
 import Button from "./button";
 import SurveyModal from "./surveymodal";
+import { StyledInput, StyledTextArea } from "../common/styledcomponents";
 
 const Day = ({ info, day_no }) => {
   const questions = program[day_no - 1].questions;
@@ -71,7 +72,7 @@ const Day = ({ info, day_no }) => {
       {questions.map((q, index) => (
         <>
           <div>{`${index + 1}. ${q}`}</div>
-          <textarea
+          <StyledTextArea
             value={responses[index]}
             onChange={(e) => {
               let temp = [...responses];
@@ -85,7 +86,7 @@ const Day = ({ info, day_no }) => {
       <div>{`${
         responses.length + 1
       }. How many minutes did you spend on your screen today?`}</div>
-      <input
+      <StyledInput
         value={minutes}
         onChange={(e) => {
           const re = /^[0-9\b]+$/;
@@ -98,7 +99,7 @@ const Day = ({ info, day_no }) => {
       <div>{`${
         responses.length + 2
       }. How many minutes did you spend on your top 3 social media apps?`}</div>
-      <input
+      <StyledInput
         value={social_minutes}
         onChange={(e) => {
           const re = /^[0-9\b]+$/;

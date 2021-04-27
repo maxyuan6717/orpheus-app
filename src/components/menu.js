@@ -28,7 +28,7 @@ const StyledLink = styled.div`
   }
 `;
 
-const NavMenu = () => {
+const NavMenu = ({ authed }) => {
   const [open, setOpen] = useState(false);
 
   const handleStateChange = (state) => {
@@ -52,15 +52,17 @@ const NavMenu = () => {
           Dashboard
         </StyledLink>
       </NavLink>
-      <StyledLink
-        onClick={async () => {
-          await signoutUser();
-          window.location.reload();
-        }}
-        to="/"
-      >
-        Sign Out
-      </StyledLink>
+      {authed === 1 && (
+        <StyledLink
+          onClick={async () => {
+            await signoutUser();
+            window.location.reload();
+          }}
+          to="/"
+        >
+          Sign Out
+        </StyledLink>
+      )}
     </Menu>
   );
 };

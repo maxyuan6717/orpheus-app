@@ -90,26 +90,30 @@ const Dashboard = () => {
                 </Link>
               </Row>
             </div>
-            <div className={styles.graph_container}>
+            <div className={styles.graph_container + " mt-5"}>
+              <div className={styles.graph_title}>
+                Your Screen Time Progress
+              </div>
               <ResponsiveLine
-                colors={{ scheme: "pastel1" }}
+                colors={{ scheme: "set1" }}
                 data={[
                   {
-                    id: "Social Media Screentime",
+                    id: "Social Media",
                     color: "hsl(152, 70%, 50%)",
                     data: social_screentime.map((min, index) => {
                       return { x: index + 1, y: min };
                     }),
                   },
                   {
-                    id: "Total Screentime",
+                    id: "Total",
                     color: "red",
                     data: screentime.map((min, index) => {
                       return { x: index + 1, y: min };
                     }),
                   },
                 ]}
-                margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
+                title="Hello"
+                margin={{ top: 75, right: 75, bottom: 75, left: 75 }}
                 axisBottom={{
                   orient: "bottom",
                   tickSize: 5,
@@ -137,9 +141,12 @@ const Dashboard = () => {
                         background: "white",
                         padding: "9px 12px",
                         border: "1px solid #ccc",
+                        zIndex: "420 !important",
                       }}
                     >
-                      <div>Day {slice.points[1].index + 1}</div>
+                      <div style={{ color: "black" }}>
+                        Day {slice.points[1].index + 1}
+                      </div>
                       {slice.points.map((point) => (
                         <div
                           key={point.id}
@@ -156,14 +163,14 @@ const Dashboard = () => {
                 }}
                 legends={[
                   {
-                    anchor: "top",
-                    direction: "row",
+                    anchor: "top-right",
+                    direction: "column",
                     justify: false,
                     translateX: 0,
-                    translateY: 0,
+                    translateY: 8,
                     itemsSpacing: 0,
                     itemDirection: "left-to-right",
-                    itemWidth: 200,
+                    itemWidth: 100,
                     itemHeight: 20,
                     itemOpacity: 0.75,
                     symbolSize: 12,
@@ -180,6 +187,9 @@ const Dashboard = () => {
                     ],
                   },
                 ]}
+                theme={{
+                  background: "#ffffff",
+                }}
               />
             </div>
           </>

@@ -64,7 +64,7 @@ const Login = ({ setAuthed }) => {
         </div>
         <div className="mb-5">
           Don't have an account?{" "}
-          <Link to="/register" style={{ color: "#d8ffd6" }}>
+          <Link to="/register" style={{ color: "var(--primary-light)" }}>
             Register
           </Link>{" "}
           for one!
