@@ -12,10 +12,8 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import { Provider } from "react-redux";
 import { checkUser } from "./util/api";
 import axios from "axios";
-import store from "./store";
 import "./common/typography.css";
 import Loading from "./components/loading";
 
@@ -53,7 +51,7 @@ function App() {
   };
 
   return (
-    <Provider store={store}>
+    <>
       {authed === -1 ? (
         <div className="d-flex" style={{ width: "100vw", height: "100vh" }}>
           <Loading />
@@ -78,7 +76,7 @@ function App() {
           </Switch>
         </Router>
       )}
-    </Provider>
+    </>
   );
 }
 
