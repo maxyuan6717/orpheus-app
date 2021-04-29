@@ -30,9 +30,13 @@ const StyledTextArea = styled.textarea`
   width: 100%;
   font-size: 16px;
   font-weight: 400;
+
+  &::placeholder {
+    color: grey !important;
+  }
 `;
 
-const SurveyModal = ({ day_no, show, setShow }) => {
+const SurveyModal = ({ day_no, show, setShow, handleSurveySubmit }) => {
   const star_size = 30;
   const [rating, setRating] = useState();
   const [engaging, setEngaging] = useState();
@@ -49,6 +53,7 @@ const SurveyModal = ({ day_no, show, setShow }) => {
       return;
     }
     await addSurvey(rating, engaging, engaging_comments, improve, day_no);
+    await handleSurveySubmit();
     setShow(false);
     setRating(null);
     setEngaging(null);

@@ -20,6 +20,21 @@ const Day = ({ info, day_no }) => {
     res["social_minutes"] ? res["social_minutes"] : ""
   );
   const [show, setShow] = useState(false);
+  const [surveyed, setSurveyed] = useState(
+    res["surveyed"] ? res["surveyed"] : false
+  );
+
+  const handleSurveySubmit = async () => {
+    setSurveyed(true);
+    const temp = [...info.responses];
+    temp[day_no] = {
+      ans: responses,
+      minutes: minutes,
+      social_minutes: social_minutes,
+      surveyed: true,
+    };
+    await saveUser(temp);
+  };
 
   useEffect(() => {
     const temp_questions = program[day_no - 1].questions;
@@ -40,16 +55,22 @@ const Day = ({ info, day_no }) => {
     } else {
       setSocialMinutes("");
     }
+    if (temp_res["surveyed"]) {
+      setSurveyed(temp_res["surveyed"]);
+    } else {
+      setSurveyed(false);
+    }
   }, [day_no, info]);
 
   const [saved, setSaved] = useState(0);
   const saveResponses = async () => {
-    setShow(true);
+    if (!surveyed) setShow(true);
     const temp = [...info.responses];
     temp[day_no] = {
       ans: responses,
       minutes: minutes,
       social_minutes: social_minutes,
+      surveyed: surveyed,
     };
     setSaved(-1);
     await saveUser(temp);
@@ -118,7 +139,12 @@ const Day = ({ info, day_no }) => {
         </div>
       </Row>
 
-      <SurveyModal show={show} setShow={setShow} day_no={day_no} />
+      <SurveyModal
+        show={show}
+        setShow={setShow}
+        day_no={day_no}
+        handleSurveySubmit={handleSurveySubmit}
+      />
     </div>
   );
 };
