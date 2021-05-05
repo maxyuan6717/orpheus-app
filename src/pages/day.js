@@ -22,6 +22,9 @@ const DayPage = () => {
   }
   if (day_no === "intro") day_no = "-1";
   day_no = parseInt(day_no);
+  if (day_no > info.day) {
+    history.push(`/`);
+  }
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -67,7 +70,10 @@ const DayPage = () => {
               <Link
                 className="my-auto ml-2"
                 to={`/${day_no + 1}`}
-                style={{ pointerEvents: day_no < 21 ? null : "none" }}
+                style={{
+                  pointerEvents:
+                    day_no < Math.min(21, info.day) ? null : "none",
+                }}
               >
                 <FaChevronRight size={25} className={styles.arrow} />
               </Link>
