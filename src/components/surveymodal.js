@@ -43,6 +43,7 @@ const SurveyModal = ({ day_no, show, setShow, handleSurveySubmit }) => {
   const [engaging_comments, setEngagingComments] = useState("");
   const [improve, setImprove] = useState("");
   const [message, setMessage] = useState("");
+  const [relate, setRelate] = useState("");
 
   const submitSurvey = async () => {
     if (!rating || !engaging) {
@@ -52,13 +53,21 @@ const SurveyModal = ({ day_no, show, setShow, handleSurveySubmit }) => {
       }, 2000);
       return;
     }
-    await addSurvey(rating, engaging, engaging_comments, improve, day_no);
+    await addSurvey(
+      rating,
+      engaging,
+      engaging_comments,
+      improve,
+      relate,
+      day_no
+    );
     await handleSurveySubmit();
     setShow(false);
     setRating(null);
     setEngaging(null);
     setEngagingComments("");
     setImprove("");
+    setRelate("");
   };
 
   return (
@@ -72,6 +81,7 @@ const SurveyModal = ({ day_no, show, setShow, handleSurveySubmit }) => {
         setEngaging(null);
         setEngagingComments("");
         setImprove("");
+        setRelate("");
       }}
     >
       <Modal.Header closeButton>
@@ -138,6 +148,19 @@ const SurveyModal = ({ day_no, show, setShow, handleSurveySubmit }) => {
               value={improve}
               onChange={(e) => {
                 setImprove(e.target.value);
+              }}
+            />
+          </StyledListItem>
+          <StyledListItem>
+            <StyledQuestion>
+              Can you relate to the material? Is it accessible?
+            </StyledQuestion>
+            <StyledTextArea
+              placeholder="Comments :)"
+              rows={2}
+              value={relate}
+              onChange={(e) => {
+                setRelate(e.target.value);
               }}
             />
           </StyledListItem>

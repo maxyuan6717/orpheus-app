@@ -48,6 +48,7 @@ const addSurvey = async (
   engaging,
   engaging_comments,
   improve,
+  relate,
   day_no
 ) => {
   let survey = await axios.post(`${Base}/survey/add`, {
@@ -55,6 +56,7 @@ const addSurvey = async (
     engaging,
     engaging_comments,
     improve,
+    relate,
     day_no,
   });
   return survey;
