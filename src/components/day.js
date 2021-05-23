@@ -7,6 +7,7 @@ import { Row } from "react-bootstrap";
 import Button from "./button";
 import SurveyModal from "./surveymodal";
 import { StyledInput, StyledTextArea } from "../common/styledcomponents";
+import ReactGA from "react-ga";
 
 const Day = ({ info, day_no }) => {
   const questions = program[day_no - 1].questions;
@@ -74,6 +75,10 @@ const Day = ({ info, day_no }) => {
     };
     setSaved(-1);
     await saveUser(temp);
+    ReactGA.event({
+      category: "Day",
+      action: "Saved Responses",
+    });
     setSaved(1);
     setTimeout(() => {
       setSaved(0);

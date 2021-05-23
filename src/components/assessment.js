@@ -5,6 +5,7 @@ import Spacer from "./spacer";
 import Button from "./button";
 import { saveUser } from "../util/api";
 import { StyledInput, StyledTextArea } from "../common/styledcomponents";
+import ReactGA from "react-ga";
 
 const Assessment = ({ info }) => {
   const res = info && info.responses ? info.responses[0] : {};
@@ -111,6 +112,10 @@ const Assessment = ({ info }) => {
     };
     setSaved(-1);
     await saveUser(temp);
+    ReactGA.event({
+      category: "Assessment",
+      action: "Saved Responses",
+    });
     setSaved(1);
     setTimeout(() => {
       setSaved(0);

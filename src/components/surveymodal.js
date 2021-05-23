@@ -5,6 +5,7 @@ import Rating from "react-rating";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import Button from "./button";
 import { addSurvey } from "../util/api";
+import ReactGA from "react-ga";
 
 const StyledModal = styled(Modal)`
   .modal-content {
@@ -62,6 +63,10 @@ const SurveyModal = ({ day_no, show, setShow, handleSurveySubmit }) => {
       day_no
     );
     await handleSurveySubmit();
+    ReactGA.event({
+      category: "Survey",
+      action: "Submitted Survey",
+    });
     setShow(false);
     setRating(null);
     setEngaging(null);
