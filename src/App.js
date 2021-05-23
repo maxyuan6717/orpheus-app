@@ -11,11 +11,16 @@ import {
   Redirect,
   Route,
   Switch,
+  useHistory,
 } from "react-router-dom";
 import { checkUser } from "./util/api";
 import axios from "axios";
 import "./common/typography.css";
 import Loading from "./components/loading";
+import ReactGA from "react-ga";
+import { GA_id } from "./util/base";
+
+ReactGA.initialize(GA_id);
 
 function App() {
   const [authed, setAuthed] = useState(-1);
@@ -33,6 +38,9 @@ function App() {
   }, []);
 
   const PublicRoute = ({ children, ...otherProps }) => {
+    const history = useHistory();
+    ReactGA.set({ page: history.location.pathname });
+    ReactGA.pageview(history.location.pathname);
     return (
       <div className={styles.container}>
         <div className={styles.inner}>
@@ -66,7 +74,6 @@ function App() {
             <PublicRoute exact path="/login">
               <Login setAuthed={setAuthed} />
             </PublicRoute>
-
             <SecureRoute exact path="/:day_no">
               <DayPage />
             </SecureRoute>
