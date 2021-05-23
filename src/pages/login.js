@@ -5,6 +5,7 @@ import { loginUser } from "../util/api";
 import { Link, useHistory } from "react-router-dom";
 import Spacer from "../components/spacer";
 import { StyledInput } from "../common/styledcomponents";
+import ReactGA from "react-ga";
 
 const Login = ({ setAuthed }) => {
   const [email, setEmail] = useState("");
@@ -23,6 +24,10 @@ const Login = ({ setAuthed }) => {
         res = await loginUser(email, password);
         console.log(res.data);
         if (res.data && res.data.login) {
+          ReactGA.event({
+            category: "Login",
+            action: "Logged In",
+          });
           setAuthed(1);
           history.push(`/`);
         }

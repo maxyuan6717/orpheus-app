@@ -5,6 +5,7 @@ import Button from "../components/button";
 import { registerUser } from "../util/api";
 import { useHistory } from "react-router-dom";
 import { StyledInput } from "../common/styledcomponents";
+import ReactGA from "react-ga";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -39,6 +40,10 @@ const Register = () => {
       try {
         res = await registerUser(email, name, password1, password2);
         if (res.data && res.data.success) {
+          ReactGA.event({
+            category: "Register",
+            action: "Registered",
+          });
           history.push(`/`);
         }
       } catch (error) {
