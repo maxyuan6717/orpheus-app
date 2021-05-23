@@ -6,6 +6,7 @@ import { Row } from "react-bootstrap";
 import { ResponsiveLine } from "@nivo/line";
 import Button from "../components/button";
 import Loading from "../components/loading";
+import ReactGA from "react-ga";
 
 const Dashboard = () => {
   const [info, setInfo] = useState({});
@@ -65,13 +66,6 @@ const Dashboard = () => {
               <div className="header">
                 Hello, {info.name ? info.name : info.email}!
               </div>
-              {!info.name && (
-                <Button
-                  to={`/register`}
-                  text="Create Account"
-                  height="2.5rem"
-                />
-              )}
             </Row>
 
             <div className="subheader">
@@ -85,6 +79,12 @@ const Dashboard = () => {
                 <Link
                   className={styles.entry_link + " my-auto"}
                   to={`/${info.day === -1 ? "intro" : Math.min(21, info.day)}`}
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Dashboard",
+                      action: "Goto Daily Entry",
+                    });
+                  }}
                 >
                   {info.day > 21
                     ? "See your past entries →"
@@ -197,6 +197,12 @@ const Dashboard = () => {
             <Row className="mx-auto justify-content-center">
               <a
                 href="https://www.notion.so/Tips-Resources-6d7d8bcfea8a481d9cd3c6cb13f8dc67"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "Dashboard",
+                    action: "Click Resources",
+                  });
+                }}
                 rel="noreferrer"
                 target="_blank"
                 className={styles.entry_link}
