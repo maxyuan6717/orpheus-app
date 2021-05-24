@@ -43,13 +43,21 @@ const NavMenu = ({ authed }) => {
       isOpen={open}
       onStateChange={handleStateChange}
     >
+      <StyledLink
+        onClick={() => {
+          window.location.href = `https://orpheuspledge.org/`;
+        }}
+        to="/"
+      >
+        Home
+      </StyledLink>
       <NavLink to="/" style={{ textDecoration: "none" }}>
         <StyledLink
           onClick={() => {
             setOpen(false);
           }}
         >
-          Dashboard
+          My Dashboard
         </StyledLink>
       </NavLink>
       {authed === 1 && (
