@@ -65,7 +65,7 @@ const Day = ({ info, day_no }) => {
 
   const [saved, setSaved] = useState(0);
   const saveResponses = async () => {
-    if (!surveyed) setShow(true);
+    // if (!surveyed) setShow(true);
     const temp = [...info.responses];
     temp[day_no] = {
       ans: responses,
