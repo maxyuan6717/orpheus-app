@@ -74,25 +74,27 @@ const Dashboard = () => {
                   {info.day > 21
                     ? "Congrats! You completed the Orpheus Pledge"
                     : `Welcome to day ${info.day === -1 ? 0 : info.day}/21`}
+                  <span className="mx-3">|</span>
+                  <Link
+                    className={styles.entry_link + " my-auto"}
+                    to={`/${
+                      info.day === -1 ? "intro" : Math.min(21, info.day)
+                    }`}
+                    onClick={() => {
+                      ReactGA.event({
+                        category: "Dashboard",
+                        action: "Goto Daily Entry",
+                      });
+                    }}
+                  >
+                    {info.day > 21
+                      ? "See your past entries →"
+                      : "Fill out today's entry →"}
+                  </Link>
                 </span>
-                <span className="mx-3 my-auto">|</span>
-                <Link
-                  className={styles.entry_link + " my-auto"}
-                  to={`/${info.day === -1 ? "intro" : Math.min(21, info.day)}`}
-                  onClick={() => {
-                    ReactGA.event({
-                      category: "Dashboard",
-                      action: "Goto Daily Entry",
-                    });
-                  }}
-                >
-                  {info.day > 21
-                    ? "See your past entries →"
-                    : "Fill out today's entry →"}
-                </Link>
               </Row>
             </div>
-            <div className={styles.graph_container + " my-5"}>
+            <div className={styles.graph_container + " mt-5"}>
               <div className={styles.graph_title}>
                 Your Screen Time Progress
               </div>
@@ -194,7 +196,7 @@ const Dashboard = () => {
                 }}
               />
             </div>
-            <Row className="mx-auto justify-content-center">
+            <Row className="mx-auto justify-content-center my-5">
               <a
                 href="https://www.notion.so/Tips-Resources-6d7d8bcfea8a481d9cd3c6cb13f8dc67"
                 onClick={() => {
