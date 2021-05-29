@@ -22,7 +22,7 @@ const DayPage = () => {
   }
   if (day_no === "intro") day_no = "-1";
   day_no = parseInt(day_no);
-  if (day_no > info.day) {
+  if (info.day > -1 && day_no > info.day) {
     history.push(`/`);
   }
   useEffect(() => {

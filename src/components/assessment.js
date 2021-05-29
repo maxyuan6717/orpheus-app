@@ -111,7 +111,7 @@ const Assessment = ({ info }) => {
       signature,
     };
     setSaved(-1);
-    await saveUser(temp);
+    await saveUser(temp, 0);
     ReactGA.event({
       category: "Assessment",
       action: "Saved Responses",

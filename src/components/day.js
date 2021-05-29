@@ -74,7 +74,7 @@ const Day = ({ info, day_no }) => {
       surveyed: surveyed,
     };
     setSaved(-1);
-    await saveUser(temp);
+    await saveUser(temp, day_no);
     ReactGA.event({
       category: "Day",
       action: "Saved Responses",

@@ -11,9 +11,10 @@ const checkUser = async () => {
   return auth;
 };
 
-const saveUser = async (responses) => {
+const saveUser = async (responses, day_no) => {
   let saved = await axios.post(`${Base}/user/save`, {
-    responses: responses,
+    responses,
+    day_no,
   });
   return saved;
 };
