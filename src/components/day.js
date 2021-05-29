@@ -135,6 +135,7 @@ const Day = ({ info, day_no }) => {
         }}
       />
       <Spacer />
+      <Spacer />
       <Row className="mx-auto justify-content-center">
         <div>
           <Button onClick={saveResponses} text="save" type="link" />

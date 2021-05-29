@@ -9,6 +9,12 @@ body {
   --secondary: #196e73;
 }
 
+@media (max-width: 720px) {
+  body {
+    font-size: 14px !important;
+  }
+}
+
 ::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }

@@ -134,7 +134,7 @@ const Assessment = ({ info }) => {
           What is the first word or thought that comes to mind when you think of
           your phone?
         </Col>
-        <Col md={8}>
+        <Col md={8} className="p-0">
           <StyledTextArea
             value={firstWord}
             onChange={(e) => {
@@ -146,13 +146,20 @@ const Assessment = ({ info }) => {
       </Row>
       <Spacer />
       <Row className="mx-auto">
-        <Col md={6} className="pl-0 d-flex">
-          <span className="mt-auto">
-            What are your technology usage habits?
-          </span>
+        <Col md={6} className="pl-0 d-flex flex-column mb-3">
+          <div className="mx-auto">What are your technology usage habits?</div>
+          <StyledTextArea
+            value={techHabits}
+            onChange={(e) => {
+              setTechHabits(e.target.value);
+            }}
+            style={{ width: "100%", height: "100%" }}
+          />
         </Col>
-        <Col md={6} className="pr-0">
-          How well do you know your device usage?
+        <Col md={6} className="px-0">
+          <div className="text-center">
+            How well do you know your device usage?
+          </div>
           <Row className="mx-auto">
             <Col xs={4} className="px-1" />
             <Col xs={4} className="px-1">
@@ -166,19 +173,6 @@ const Assessment = ({ info }) => {
               </strong>
             </Col>
           </Row>
-        </Col>
-      </Row>
-      <Row className="mx-auto">
-        <Col md={6} className="pl-0">
-          <StyledTextArea
-            value={techHabits}
-            onChange={(e) => {
-              setTechHabits(e.target.value);
-            }}
-            style={{ width: "100%", height: "100%" }}
-          />
-        </Col>
-        <Col md={6} className="pl-0">
           {dev_questions.map((question, index) => (
             <Row className="mx-auto" key={index}>
               <Col xs={4} className="px-1 py-1 text-right">
@@ -201,6 +195,14 @@ const Assessment = ({ info }) => {
           ))}
         </Col>
       </Row>
+      {/* <Row className="mx-auto">
+        <Col md={6} className="pl-0">
+          
+        </Col>
+        <Col md={6} className="pl-0">
+          
+        </Col>
+      </Row> */}
       <Spacer />
       <Row className="mx-auto my-2">
         <Col md={2} />
@@ -262,7 +264,7 @@ const Assessment = ({ info }) => {
         <Col md={4} className="p-0">
           What does a healthy relationship with technology look like for you?
         </Col>
-        <Col md={8}>
+        <Col md={8} className="p-0">
           <StyledTextArea
             value={healthy}
             onChange={(e) => {
@@ -493,7 +495,7 @@ const Assessment = ({ info }) => {
       </Row>
       <Spacer />
       <div className="text1 bold">Choose Filters</div>
-      <Row className="mx-auto px-5">
+      <Row className="mx-auto px-0">
         <Col md={6} className="pl-0">
           {filter_labels.map((filter, index) => (
             <div key={index}>
@@ -526,7 +528,7 @@ const Assessment = ({ info }) => {
       </Row>
       <Spacer />
       <div className="header mt-4">Pledge</div>
-      <div className="m-4">
+      <div className="my-4">
         <div className="text1 bold">A quick note:</div>
         <Spacer />
         <ol>
@@ -582,6 +584,7 @@ const Assessment = ({ info }) => {
           }}
         />
       </Row>
+      <Spacer />
       <Spacer />
       <Row className="mx-auto justify-content-center">
         <div>

@@ -41,3 +41,13 @@
 .selected_strat {
   background-color: rgba(68, 165, 255, 0.2) !important;
 }
+
+@media (max-width: 720px) {
+  .select_container {
+    width: 100%;
+    margin: 5px 0;
+  }
+  .strategy {
+    width: 100%;
+  }
+}

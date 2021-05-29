@@ -3,14 +3,14 @@ import "../common/burger.css";
 import burger_icon from "../assets/burger.svg";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { slide as Menu } from "react-burger-menu";
+import { stack as Menu } from "react-burger-menu";
 import { signoutUser } from "../util/api";
 
 const StyledLink = styled.div`
   color: var(--primary);
   font-family: "Quicksand", sans-serif;
-  font-weight: 500;
-  font-size: 20px;
+  font-weight: 600;
+  font-size: 24px;
   padding: 5px 0px 5px 20px;
   transition: background-color 0.3s;
 
